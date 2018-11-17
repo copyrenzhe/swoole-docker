@@ -73,12 +73,11 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && composer self-update --clean-backups
 
 # config
-RUN echo "error_log = /data/logs/php/php_error.log" > /usr/local/etc/php/conf.d/log.ini \
-    echo "log_errors = On" >> /usr/local/etc/php/conf.d/log.ini
+RUN echo "error_log = /data/logs/php/php_error.log" > /usr/local/etc/php/conf.d/log.ini
+RUN echo "log_errors = On" >> /usr/local/etc/php/conf.d/log.ini
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod 777 /usr/local/bin/docker-entrypoint.sh \
     && ln -s /usr/local/bin/docker-entrypoint.sh /
-ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD [ "php", "-a" ]
+ENTRYPOINT ["docker-entrypoint.sh"]
