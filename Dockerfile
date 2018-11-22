@@ -69,7 +69,7 @@ RUN wget https://github.com/swoole/swoole-src/archive/v${SWOOLE_VERSION}.tar.gz 
     && rm -r swoole
 
 # Enable extension
-RUN docker-php-ext-enable imagick redis swoole
+RUN docker-php-ext-enable imagick redis swoole amqp
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php \
