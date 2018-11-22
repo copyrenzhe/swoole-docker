@@ -25,6 +25,7 @@ RUN apt-get update \
     && apt-get install -y \
     curl \
     wget \
+    librabbitmq-dev \
     libmagickwand-dev \
     libssl-dev \
     libnghttp2-dev \
@@ -40,6 +41,9 @@ RUN pecl install imagick
 
 # Redis extension
 RUN pecl install redis
+
+# Amqp extension
+RUN pecl install amqp
 
 # Hiredis
 RUN wget https://github.com/redis/hiredis/archive/v${HIREDIS_VERSION}.tar.gz -O hiredis.tar.gz \
